@@ -2,7 +2,7 @@ import Image, { type StaticImageData } from 'next/image';
 import React from 'react';
 
 type Props = {
-  src: StaticImageData;
+  src: StaticImageData | string;
 };
 
 const ImageCard = ({ src }: Props) => {

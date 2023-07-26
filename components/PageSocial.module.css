@@ -6,6 +6,7 @@
   inset:end;
   gap:0.25rem;
   text-align: center;
+  color: var(--fg-color);
   padding: 0 12px
 
 }

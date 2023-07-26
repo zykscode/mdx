@@ -65,13 +65,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className="px-4">
+      <body className="px-2">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="notion app bg-primary text-primaryFg">
             <div className="viewport"></div>
-            <div className="page-scroller mt-2">
-              <div className="frame">
-                <Header />
+            <div className="frame">
+              <Header />
+              <div className="page-scroller mt-2">
                 {children}
                 <SiteFooter />
               </div>

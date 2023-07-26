@@ -11,7 +11,7 @@ type Props = {
   href: string;
   title: string;
   name: string;
-  icon: JSX.Element;
+  icon: any;
 };
 
 const Motion = ({ href, title, name, icon }: Props) => {
@@ -28,7 +28,10 @@ const Motion = ({ href, title, name, icon }: Props) => {
       target="_blank"
       rel="noopener noreferrer"
     >
-     
+      <div className={styles.actionBg}>
+        <div className={styles.actionBgPane} />
+      </div>
+
       <div className={styles.actionBg}>{icon}</div>
     </motion.a>
   );

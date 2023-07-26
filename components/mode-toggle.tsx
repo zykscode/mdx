@@ -13,7 +13,7 @@ export function ModeToggle() {
       variant={'ghost'}
       size={'sm'}
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-      className="flex h-8 w-8 items-center justify-center rounded-full "
+      className="flex h-8 w-8 items-center justify-center rounded-full md:h-12 md:w-12 "
     >
       <span className="sr-only">Toggle mode</span>
 
