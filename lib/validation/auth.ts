@@ -13,7 +13,14 @@ export const userRegSchema = z
     }),
     password: z
       .string()
-      .min(6, { message: 'Password must be atleast 6 characters' }),
+      .min(8, { message: 'Password must be at least 8 characters' })
+      .regex(
+        /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]+$/,
+        {
+          message:
+            'Password must contain at least 1 capital letter, 1 digit, and 1 special character',
+        }
+      ),
     confirmPassword: z
       .string()
       .min(1, { message: 'Confirm Password is required' }),
@@ -23,5 +30,5 @@ export const userRegSchema = z
   })
   .refine((data) => data.password === data.confirmPassword, {
     path: ['confirmPassword'],
-    message: "Password don't match",
+    message: "Passwords don't match",
   });

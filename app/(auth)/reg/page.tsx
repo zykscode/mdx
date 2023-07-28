@@ -6,7 +6,7 @@ type Props = {};
 
 function Page({}: Props) {
   return (
-    <div>
+    <div className="container w-full">
       <UserRegForm />
     </div>
   );
