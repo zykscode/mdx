@@ -69,7 +69,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="notion app bg-primary text-primaryFg">
             <div className="viewport"></div>
-            <div className="frame">
+            <div className="frame min-h-screen">
               <Header />
               <div className="page-scroller mt-2">
                 {children}

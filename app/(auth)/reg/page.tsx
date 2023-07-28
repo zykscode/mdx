@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { UserAuthForm } from '#/components/user-auth-form';
+import UserRegForm from '#/components/user-reg-form';
 
 type Props = {};
 
 function Page({}: Props) {
   return (
     <div>
-      <UserAuthForm />
+      <UserRegForm />
     </div>
   );
 }

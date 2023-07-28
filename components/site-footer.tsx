@@ -9,7 +9,7 @@ import styles from './styles.module.css';
 export const SiteFooter = () => {
   const { twitter, github, youtube } = siteConfig.links;
   return (
-    <footer className="container py-2 lg:max-w-7xl ">
+    <footer className="container bg-yellow py-2 lg:max-w-7xl ">
       <div className="flex flex-col items-center justify-between gap-4 border-t  py-10 md:h-24 md:flex-row md:py-0">
         <div className="order-1 md:order-2">
           <ModeToggle />
