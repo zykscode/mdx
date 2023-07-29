@@ -1,13 +1,13 @@
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import { PrismaClient } from '@prisma/client';
-import { NextAuthOptions } from 'next-auth';
+import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
+import bcrypt from 'bcrypt'
 
-const prisma = new PrismaClient();
+import { db } from './db';
 
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(db),
   secret: process.env.SECRET as string,
   session: {
     strategy: 'jwt',
@@ -25,20 +25,28 @@ export const authOptions: NextAuthOptions = {
         username: { label: 'Username', type: 'text', placeholder: 'John Doe' },
       },
       async authorize(credentials) {
-        const user = {
-          id: 1,
-          password: 'etc',
-          name: 'James',
-          email: 'felsal@yahoo.com',
-        };
 
-        if (
-          credentials?.username === user.name &&
-          credentials?.password === user.password
-        ) {
-          return user;
+        if(!credentials?.email|| !credentials.password){
+          throw new Error("Please enter email and passowrd");
+          
         }
-        return null;
+        const user = await db.user.findUnique({
+          where:{
+            email:credentials.email
+          }
+        })
+
+        if(!user||!user.hashedPassword){
+throw new Error("no user found");
+
+        }
+
+        const passowrdMatch = await bcrypt.compare(credentials.password, user.hashedPassword)
+        if(!passowrdMatch){
+          throw new Error("Imcorrect passowr");
+          
+        }
+        return user
       },
     }),
     // EmailProvider({

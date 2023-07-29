@@ -23,7 +23,7 @@ interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 type FormData = z.infer<typeof userAuthSchema>;
 
-export function UserAuthForm({  ...props }: UserAuthFormProps) {
+export function UserAuthForm({ ...props }: UserAuthFormProps) {
   const {
     register,
     handleSubmit,
@@ -39,8 +39,8 @@ export function UserAuthForm({  ...props }: UserAuthFormProps) {
   async function onSubmit(data: FormData) {
     setIsLoading(true);
 
-    const signInResult = await signIn('email', {
-      email: data.email.toLowerCase(),
+    const signInResult = await signIn('credentials', {
+      ...data,
       redirect: false,
       callbackUrl: searchParams?.get('from') || '/dashboard',
     });
@@ -146,12 +146,16 @@ export function UserAuthForm({  ...props }: UserAuthFormProps) {
 
         <div className="relative">
           <div className="absolute inset-0 flex items-center">
-            <span className="w-full border-t" />
+            <span className="w-1/4 border-t-2" />
+            <span className="w-1/4 border-t-0" />
+            <span className="w-1/4 border-t-0" />
+
+            <span className="w-1/4 border-t-2" />
           </div>
-          <div className="relative flex justify-center text-xs uppercase">
+          <div className="relative z-20 flex  justify-center text-xs uppercase ">
             <span className="bg-background px-2 text-muted-foreground">
               Or continue with
-            </span>
+          </span>
           </div>
         </div>
         <button
@@ -166,12 +170,12 @@ export function UserAuthForm({  ...props }: UserAuthFormProps) {
           {isGoogleLoading ? (
             <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
           ) : (
-            <FcGoogle className="mr-2 h-4 w-4" />
-          )}{' '}
-          Github
-        </button>
+           <FcGoogle className="mr-2 h-4 w-4" />
+          )}
+          Google
+      </button>
       </div>
-      <div className="flex-1 bg-colours-red  hidden w-full md:flex"></div>
+      <div className="hidden w-full  flex-1 bg-colours-red md:flex"></div>
     </div>
   );
 }

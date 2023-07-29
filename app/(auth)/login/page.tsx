@@ -2,9 +2,7 @@ import React from 'react';
 
 import { UserAuthForm } from '#/components/user-auth-form';
 
-type Props = {};
-
-function Page({}: Props) {
+function Page() {
   return (
     <div className="container">
       <UserAuthForm />

@@ -11,6 +11,7 @@ import { userRegSchema } from '#/lib/validation/auth';
 
 import { Icons } from './icons';
 import { Input } from './ui/input';
+import { toast } from './ui/use-toast';
 
 interface UserRegFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -30,8 +31,29 @@ const UserRegForm = ({ ...props }: UserRegFormProps) => {
   const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
   async function onSubmit(data: FormData) {
+    setIsLoading(true);
+
+    const response = await fetch('/api/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response?.ok) {
+      return toast({
+        title: 'Something went wrong.',
+        description: 'Your name was not updated. Please try again.',
+        variant: 'destructive',
+      });
+    }
+
+    toast({
+      description: 'You have registered.',
+    });
+
     setIsLoading(false);
-    return console.log(data);
   }
 
   return (
