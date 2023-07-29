@@ -1,11 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-type Props = {}
+import { UserAuthForm } from '#/components/user-auth-form';
+
+type Props = {};
 
 function Page({}: Props) {
   return (
-    <div>Page</div>
-  )
+    <div className="container">
+      <UserAuthForm />
+    </div>
+  );
 }
 
-export default Page
+export default Page;
