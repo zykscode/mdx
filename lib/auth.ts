@@ -1,5 +1,5 @@
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import type { NextAuthOptions } from 'next-auth';
+import { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 import bcrypt from 'bcrypt'
@@ -30,23 +30,26 @@ export const authOptions: NextAuthOptions = {
           throw new Error("Please enter email and passowrd");
           
         }
+      
         const user = await db.user.findUnique({
           where:{
             email:credentials.email
           }
         })
+        console.log(user,'useerr')
 
         if(!user||!user.hashedPassword){
-throw new Error("no user found");
+          throw new Error("no user found");
 
-        }
-
+        } 
         const passowrdMatch = await bcrypt.compare(credentials.password, user.hashedPassword)
         if(!passowrdMatch){
-          throw new Error("Imcorrect passowr");
+          throw new Error("Incorrect password");
           
         }
         return user
+   
+        
       },
     }),
     // EmailProvider({

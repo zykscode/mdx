@@ -53,11 +53,26 @@ export function UserAuthForm({ ...props }: UserAuthFormProps) {
 
     setIsLoading(false);
     console.log(signInResult, 'hhrrrrrrrrrrrr');
-
-    if (!signInResult?.ok) {
+    const regex = /^'\nInvalid.*/;
+       
+    if (signInResult?.error) {
       return toast({
         title: 'Something went wrong.',
         description: signInResult.error,
+        variant: 'destructive',
+      });
+    }
+if(regex.signInResult?.error){
+  return toast({
+    title: 'Something went wrong.',
+    description: 'Unable to connect,check internet connection',
+    variant: 'destructive',
+  });
+}
+    if (!signInResult?.ok) {
+      return toast({
+        title: 'Something went wrong.',
+        description: 'Your sign in request failed. Please try again.',
         variant: 'destructive',
       });
     }
