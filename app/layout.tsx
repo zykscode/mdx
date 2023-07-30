@@ -9,6 +9,7 @@ import { TailwindIndicator } from '#/components/tailwind-indicator';
 import { ThemeProvider } from '#/components/theme-provider';
 import { Toaster } from '#/components/toaster';
 import { siteConfig } from '#/config/site';
+import Provider from '#/components/auth-provider';
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -66,6 +67,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en" suppressHydrationWarning>
       <head />
       <body className="px-2">
+        <Provider>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="notion app bg-primary text-primaryFg">
             <div className="viewport"></div>
@@ -80,7 +82,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             <Toaster />
             <TailwindIndicator />
           </div>
-        </ThemeProvider>
+        </ThemeProvider></Provider>
       </body>
     </html>
   );

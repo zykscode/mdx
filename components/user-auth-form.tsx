@@ -1,10 +1,10 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useSearchParams } from 'next/navigation';
-import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import { signIn, useSession } from 'next-auth/react';
 import * as React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { BsEye, BsEyeSlash } from 'react-icons/bs';
 import { FcGoogle } from 'react-icons/fc';
@@ -33,8 +33,15 @@ export function UserAuthForm({ ...props }: UserAuthFormProps) {
   });
   const [isLoading, setIsLoading] = React.useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = React.useState(false);
-  const searchParams = useSearchParams();
+
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const session = useSession();
+  const router = useRouter();
+  useEffect(() => {
+    if (session?.status === 'authenticated') {
+      router.push('/dashboard');
+    }
+  }, []);
 
   async function onSubmit(data: FormData) {
     setIsLoading(true);
@@ -42,22 +49,22 @@ export function UserAuthForm({ ...props }: UserAuthFormProps) {
     const signInResult = await signIn('credentials', {
       ...data,
       redirect: false,
-      callbackUrl: searchParams?.get('from') || '/dashboard',
     });
 
     setIsLoading(false);
+    console.log(signInResult, 'hhrrrrrrrrrrrr');
 
     if (!signInResult?.ok) {
       return toast({
         title: 'Something went wrong.',
-        description: 'Your sign in request failed. Please try again.',
+        description: signInResult.error,
         variant: 'destructive',
       });
     }
 
     return toast({
-      title: 'Check your email',
-      description: 'We sent you a login link. Be sure to check your spam too.',
+      title: 'Login successful',
+      description: 'You are Logged in ',
     });
   }
 
@@ -155,7 +162,7 @@ export function UserAuthForm({ ...props }: UserAuthFormProps) {
           <div className="relative z-20 flex  justify-center text-xs uppercase ">
             <span className="bg-background px-2 text-muted-foreground">
               Or continue with
-          </span>
+            </span>
           </div>
         </div>
         <button
@@ -170,10 +177,10 @@ export function UserAuthForm({ ...props }: UserAuthFormProps) {
           {isGoogleLoading ? (
             <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
           ) : (
-           <FcGoogle className="mr-2 h-4 w-4" />
+            <FcGoogle className="mr-2 h-4 w-4" />
           )}
           Google
-      </button>
+        </button>
       </div>
       <div className="hidden w-full  flex-1 bg-colours-red md:flex"></div>
     </div>
