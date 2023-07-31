@@ -5,6 +5,7 @@
         "turbo": "next dev --turbo",
         "start": "next start",
         "lint": "next lint",
+        "format": "next lint --fix && prettier '**/*.{json,yaml}' --write --ignore-path .gitignore",
         "preview": "next build && next start",
         "postinstall": "prisma generate"
     },
