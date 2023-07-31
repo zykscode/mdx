@@ -8,7 +8,7 @@ export async function POST(request) {
   const { firstName, lastName, email, password } = body;
   console.log('im the api herere', password, firstName, body);
   if (!email || !password) {
-    return new NextResponse('Missi fields', { status: 400 });
+    return new NextResponse('Missing fields', { status: 400 });
   }
 
   const exist = await db.user.findUnique({
