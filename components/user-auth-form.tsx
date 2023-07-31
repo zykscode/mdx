@@ -51,10 +51,17 @@ export function UserAuthForm({ ...props }: UserAuthFormProps) {
       redirect: false,
     });
 
+    
     setIsLoading(false);
-    console.log(signInResult, 'hhrrrrrrrrrrrr');
-    const regex = /^'\nInvalid.*/;
-       
+    const regex = /"\\nInvalid.*"/;
+    const jsonString = JSON.stringify(signInResult?.error);
+    if (jsonString.match(regex)) {
+      return toast({
+        title: 'Something went wrong.',
+        description: 'Unable to connect,check internet connection',
+        variant: 'destructive',
+      });
+    }
     if (signInResult?.error) {
       return toast({
         title: 'Something went wrong.',
@@ -62,13 +69,6 @@ export function UserAuthForm({ ...props }: UserAuthFormProps) {
         variant: 'destructive',
       });
     }
-if(regex.signInResult?.error){
-  return toast({
-    title: 'Something went wrong.',
-    description: 'Unable to connect,check internet connection',
-    variant: 'destructive',
-  });
-}
     if (!signInResult?.ok) {
       return toast({
         title: 'Something went wrong.',

@@ -36,8 +36,7 @@ export const authOptions: NextAuthOptions = {
             email:credentials.email
           }
         })
-        console.log(user,'useerr')
-
+      
         if(!user||!user.hashedPassword){
           throw new Error("no user found");
 
@@ -48,8 +47,6 @@ export const authOptions: NextAuthOptions = {
           
         }
         return user
-   
-        
       },
     }),
     // EmailProvider({
