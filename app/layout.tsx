@@ -3,13 +3,13 @@ import '#/styles/globals.css';
 import React from 'react';
 
 import { Analytics } from '#/components/analytics';
+import Provider from '#/components/auth-provider';
 import { Header } from '#/components/header';
 import { SiteFooter } from '#/components/site-footer';
 import { TailwindIndicator } from '#/components/tailwind-indicator';
 import { ThemeProvider } from '#/components/theme-provider';
 import { Toaster } from '#/components/toaster';
 import { siteConfig } from '#/config/site';
-import Provider from '#/components/auth-provider';
 
 interface RootLayoutProps {
   children: React.ReactNode;
@@ -68,21 +68,22 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head />
       <body className="px-2">
         <Provider>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="notion app bg-primary text-primaryFg">
-            <div className="viewport"></div>
-            <div className="frame min-h-screen">
-              <Header />
-              <div className="page-scroller mt-2">
-                {children}
-                <SiteFooter />
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <div className="notion app bg-primary text-primaryFg">
+              <div className="viewport"></div>
+              <div className="frame min-h-screen">
+                <Header />
+                <div className="page-scroller mt-2">
+                  {children}
+                  <SiteFooter />
+                </div>
               </div>
+              <Analytics />
+              <Toaster />
+              <TailwindIndicator />
             </div>
-            <Analytics />
-            <Toaster />
-            <TailwindIndicator />
-          </div>
-        </ThemeProvider></Provider>
+          </ThemeProvider>
+        </Provider>
       </body>
     </html>
   );

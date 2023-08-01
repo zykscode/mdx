@@ -34,7 +34,7 @@ export default function IndexPage() {
               </div>
               <div className="gallery">
                 <div className="gallery-view">
-                  <div className="gallery-grid gallery-grid-size-medium">
+                  <div className="gallery-grid bg-item_pink gallery-grid-size-medium">
                     {allPosts.map((post) => (
                       <PostCard
                         key={post.title}
