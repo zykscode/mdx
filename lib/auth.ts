@@ -24,30 +24,29 @@ export const authOptions: NextAuthOptions = {
         password: { label: 'Password', type: 'password' },
         username: { label: 'Username', type: 'text', placeholder: 'John Doe' },
       },
-      async authorize(credentials) {
-
-        if(!credentials?.email|| !credentials.password){
-          throw new Error("Please enter email and passowrd");
-          
-        }
       
-        const user = await db.user.findUnique({
-          where:{
-            email:credentials.email
-          }
-        })
-      
-        if(!user||!user.hashedPassword){
-          throw new Error("no user found");
+async authorize(credentials) {
+  if (!credentials?.email || !credentials.password) {
+    throw new AuthError("Please enter email and password");
+  }
 
-        } 
-        const passowrdMatch = await bcrypt.compare(credentials.password, user.hashedPassword)
-        if(!passowrdMatch){
-          throw new Error("Incorrect password");
-          
-        }
-        return user
-      },
+  const user = await db.user.findUnique({
+    where: {
+      email: credentials.email,
+    },
+  });
+
+  if (!user || !user.hashedPassword) {
+    throw new AuthError("no user found");
+  }
+
+  const passwordMatch = await bcrypt.compare(credentials.password, user.hashedPassword);
+  if (!passwordMatch) {
+    throw new AuthError("Incorrect password");
+  }
+
+  return user;
+},
     }),
     // EmailProvider({
     //   from: env.SMTP_FROM,
