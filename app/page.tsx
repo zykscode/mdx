@@ -26,7 +26,7 @@ export default function IndexPage() {
           {`${siteConfig.name}.com`}
         </h1>
         <div className="page-content page-content-has-aside">
-          <article className="page-content-inner ">
+          <article className="page-content-inner overflow-hidden">
             <div className="collection block">
               <div className="collection-header">
                 <h1 className="mr-2 inline-flex items-center break-words text-xl font-semibold">
@@ -35,7 +35,7 @@ export default function IndexPage() {
               </div>
               <div className="gallery">
                 <div className="gallery-view">
-                  <div className="gallery-grid gallery-grid-size-medium overflow-hidden bg-item_pink">
+                  <div className="gallery-grid gallery-grid-size-medium ">
                     {allPosts.map((post) => (
                       <PostCard
                         key={post.title}
