@@ -103,7 +103,7 @@ export function UserAuthForm({ ...props }: UserAuthFormProps) {
             </Label>
             <Input
               id="email"
-              placeholder="name@example.com"
+              placeholder="Enter your email"
               type="email"
               autoCapitalize="none"
               autoComplete="email"

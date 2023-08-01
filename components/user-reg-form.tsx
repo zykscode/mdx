@@ -132,7 +132,7 @@ const UserRegForm = ({ ...props }: UserRegFormProps) => {
               </Label>
               <Input
                 id="email"
-                placeholder="name@example.com"
+                placeholder="Enter your email"
                 type="email"
                 autoCapitalize="none"
                 autoComplete="email"
