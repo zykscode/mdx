@@ -17,7 +17,7 @@ function MainNav({ items, className }: Props) {
     return items?.map((item) => (
       <Link
         key={item.href}
-        className="duration-['2ms'] ease-lieaar hover hover:bg-decend/80 border-blue p-3 text-sm transition-colors hover:border-b-2 md:p-4"
+        className="duration-['2ms'] ease-lieaar hover hover:bg-decend/80 border-colours-blue p-3 text-sm transition-colors hover:border-b-2 md:p-4"
         href={item.href}
       >
         {item.title}
