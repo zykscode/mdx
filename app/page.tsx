@@ -25,8 +25,8 @@ export default function IndexPage() {
         <h1 className="w-full text-center text-[2.5rem] font-bold  leading-tight">
           {`${siteConfig.name}.com`}
         </h1>
-        <div className="page-content page-content-has-aside">
-          <article className="page-content-inner overflow-hidden px-2">
+        <div className="page-content  page-content-has-aside overflow-hidden px-2">
+          <article className="page-content-inner">
             <div className="collection block">
               <div className="collection-header">
                 <h1 className="mr-2 inline-flex items-center break-words text-xl font-semibold">
@@ -48,7 +48,7 @@ export default function IndexPage() {
               </div>
             </div>
           </article>
-          <aside className="aside px-4">
+          <aside className="aside">
             <PageSocial />
           </aside>
         </div>
