@@ -5,7 +5,6 @@ import React from 'react';
 import { Analytics } from '#/components/analytics';
 import Provider from '#/components/auth-provider';
 import { Header } from '#/components/header';
-import { SiteFooter } from '#/components/site-footer';
 import { TailwindIndicator } from '#/components/tailwind-indicator';
 import { ThemeProvider } from '#/components/theme-provider';
 import { Toaster } from '#/components/toaster';
@@ -73,10 +72,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <div className="viewport"></div>
               <div className="frame min-h-screen">
                 <Header />
-                <div className="page-scroller mt-2">
-                  {children}
-                  <SiteFooter />
-                </div>
+                {children}
               </div>
               <Analytics />
               <Toaster />

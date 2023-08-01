@@ -7,10 +7,11 @@ import { PageSocial } from '#/components/PageSocial';
 import PostCard from '#/components/PostCard';
 import { siteConfig } from '#/config/site';
 import Me from '#/public/images/hero.png';
+import { SiteFooter } from '#/components/site-footer';
 
 export default function IndexPage() {
   return (
-    <>
+    <div className="page-scroller mt-2">
       <CoverWrapper src={Me} />
       <main className="page  page-has-cover page-has-icon page-has-image-icon full-page index-page">
         <div className="absolute -top-16 left-[50%] z-40 -ml-16 h-32 w-32 items-center rounded-full shadow-lg">
@@ -52,6 +53,7 @@ export default function IndexPage() {
           </aside>
         </div>
       </main>
-    </>
+      <SiteFooter />
+    </div>
   );
 }
