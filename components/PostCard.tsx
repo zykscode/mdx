@@ -3,7 +3,6 @@ import Link from 'next/link';
 import ImageCard from './image-card';
 import CardBody from './ui/card-body';
 
-
 type Props = {
   post: any;
 };

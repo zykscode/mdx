@@ -12,7 +12,7 @@ export default function IndexPage() {
   return (
     <>
       <CoverWrapper src={Me} />
-      <main className="page  page-has-cover page-has-icon page-has-image-icon full-page index-page overflow-hidden">
+      <main className="page  page-has-cover page-has-icon page-has-image-icon full-page index-page">
         <div className="absolute -top-16 left-[50%] z-40 -ml-16 h-32 w-32 items-center rounded-full shadow-lg">
           <Image
             className="h-full w-full rounded-full object-cover"
@@ -34,7 +34,7 @@ export default function IndexPage() {
               </div>
               <div className="gallery">
                 <div className="gallery-view">
-                  <div className="gallery-grid gallery-grid-size-medium bg-item_pink">
+                  <div className="gallery-grid gallery-grid-size-medium overflow-hidden bg-item_pink">
                     {allPosts.map((post) => (
                       <PostCard
                         key={post.title}
