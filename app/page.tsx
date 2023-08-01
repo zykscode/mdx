@@ -26,7 +26,7 @@ export default function IndexPage() {
           {`${siteConfig.name}.com`}
         </h1>
         <div className="page-content page-content-has-aside">
-          <article className="page-content-inner overflow-hidden">
+          <article className="page-content-inner overflow-hidden px-2">
             <div className="collection block">
               <div className="collection-header">
                 <h1 className="mr-2 inline-flex items-center break-words text-xl font-semibold">
