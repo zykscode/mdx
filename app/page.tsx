@@ -5,9 +5,9 @@ import { allPosts } from '#/.contentlayer/generated';
 import CoverWrapper from '#/components/cover-wrapper';
 import { PageSocial } from '#/components/PageSocial';
 import PostCard from '#/components/PostCard';
+import { SiteFooter } from '#/components/site-footer';
 import { siteConfig } from '#/config/site';
 import Me from '#/public/images/hero.png';
-import { SiteFooter } from '#/components/site-footer';
 
 export default function IndexPage() {
   return (
