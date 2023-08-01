@@ -630,6 +630,7 @@ pre::-webkit-scrollbar {
   caret-color: var(--gray);
   font-family: var(--font);
   --max-width: 720px;
+
   --header-height: 54px
 }
 
