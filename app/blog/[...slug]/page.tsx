@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import '#/styles/mdx.css';
 
 import { allAuthors, allPosts } from 'contentlayer/generated';
